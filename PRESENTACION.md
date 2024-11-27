@@ -85,3 +85,48 @@ Mostrar cómo aparecen las alertas de seguridad después de ciertas acciones o t
 
 Esta demo ilustra varias capas de seguridad que se pueden implementar en un sistema de autenticación. Sin embargo, es importante recordar que en un entorno de producción, se necesitarían medidas adicionales y la autenticación debería manejarse principalmente en el servidor.
 
+
+# Vulnerabilidades
+
+#### Una vulnerabilidad XSS (Cross-Site Scripting) simulada
+#### Una "fuga" de información sensible en los logs
+#### Una simulación de ataque de fuerza bruta
+
+
+**Vulnerabilidad XSS (Cross-Site Scripting)**:
+
+- En el panel de administración, hemos agregado un campo de comentarios que renderiza el contenido sin sanitizarlo.
+- Para demostrar: Ingresa un comentario con código JavaScript, como `<script>alert('XSS')</script>`. Verás que el script se ejecuta cuando se renderiza el comentario.
+- Esto demuestra cómo un atacante podría inyectar y ejecutar código malicioso en la página.
+
+
+
+**Fuga de información sensible**:
+
+- En el formulario de inicio de sesión, estamos registrando en la consola del navegador el nombre de usuario, la contraseña y datos sensibles simulados.
+- Para demostrar: Abre la consola del navegador e intenta iniciar sesión. Verás que se registran todos estos datos sensibles.
+- Esto simula cómo un sistema mal configurado podría exponer información confidencial en logs o registros accesibles.
+
+
+
+**Ataque de fuerza bruta**:
+
+- Hemos agregado un botón para simular un ataque de fuerza bruta.
+- Para demostrar: Haz clic en el botón "Simular ataque de fuerza bruta". Verás en la consola del navegador cómo se realizan múltiples intentos de inicio de sesión rápidamente.
+- Esto ilustra cómo un atacante podría intentar adivinar contraseñas probando múltiples combinaciones en poco tiempo.
+
+## Para presentar estas vulnerabilidades:
+
+1. Muestra cómo funciona normalmente la aplicación.
+2. Luego, demuestra cada vulnerabilidad:
+
+1. Para XSS, ingresa un comentario malicioso en el panel de administración.
+2. Para la fuga de información, muestra los logs en la consola del navegador después de un intento de inicio de sesión.
+3. Para el ataque de fuerza bruta, usa el botón de simulación y muestra los intentos en la consola.
+
+
+
+3. Finalmente, explica cómo las medidas de seguridad que implementamos (como la validación de contraseñas, el límite de intentos de inicio de sesión, y la autenticación de dos factores) ayudan a mitigar estos tipos de ataques.
+
+
+Recuerda enfatizar que estas son vulnerabilidades simuladas con fines educativos y que en un entorno de producción real, se deben implementar medidas de seguridad mucho más robustas y nunca exponer intencionalmente vulnerabilidades.
